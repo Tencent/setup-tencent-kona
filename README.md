@@ -64,6 +64,17 @@ This action allows you to work with Java and Scala projects.
 
 ### Basic Configuration
 
+#### Tencent Kona
+```yaml
+steps:
+- uses: actions/checkout@v4
+- uses: Tencent/setup-tencent-kona@v4
+  with:
+    distribution: 'kona' # See 'Supported distributions' for available options
+    java-version: '21'
+- run: java HelloWorldApp.java
+```
+
 #### Eclipse Temurin
 ```yaml
 steps:
@@ -134,9 +145,9 @@ The cache input is optional, and caching is turned off by default.
 ```yaml
 steps:
 - uses: actions/checkout@v4
-- uses: actions/setup-java@v4
+- uses: Tencent/setup-tencent-kona@v4
   with:
-    distribution: 'temurin'
+    distribution: 'kona'
     java-version: '21'
     cache: 'gradle'
     cache-dependency-path: | # optional
@@ -149,9 +160,9 @@ steps:
 ```yaml
 steps:
 - uses: actions/checkout@v4
-- uses: actions/setup-java@v4
+- uses: Tencent/setup-tencent-kona@v4
   with:
-    distribution: 'temurin'
+    distribution: 'kona'
     java-version: '21'
     cache: 'maven'
     cache-dependency-path: 'sub-project/pom.xml' # optional
@@ -163,9 +174,9 @@ steps:
 ```yaml
 steps:
 - uses: actions/checkout@v4
-- uses: actions/setup-java@v4
+- uses: Tencent/setup-tencent-kona@v4
   with:
-    distribution: 'temurin'
+    distribution: 'kona'
     java-version: '21'
     cache: 'sbt'
     cache-dependency-path: | # optional
@@ -183,9 +194,9 @@ env:
   SEGMENT_DOWNLOAD_TIMEOUT_MINS: '5'
 steps:
 - uses: actions/checkout@v4
-- uses: actions/setup-java@v4
+- uses: Tencent/setup-tencent-kona@v4
   with:
-    distribution: 'temurin'
+    distribution: 'kona'
     java-version: '21'
     cache: 'gradle'
 - run: ./gradlew build --no-daemon
@@ -203,9 +214,9 @@ For Java distributions that are not cached on Hosted images, `check-latest` alwa
 ```yaml
 steps:
 - uses: actions/checkout@v4
-- uses: actions/setup-java@v4
+- uses: Tencent/setup-tencent-kona@v4
   with:
-    distribution: 'temurin'
+    distribution: 'kona'
     java-version: '21'
     check-latest: true
 - run: java HelloWorldApp.java
@@ -223,7 +234,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup java
-        uses: actions/setup-java@v4
+        uses: Tencent/setup-tencent-kona@v4
         with:
           distribution: '<distribution>'
           java-version: ${{ matrix.java }}
@@ -236,7 +247,7 @@ All versions are added to the PATH. The last version will be used and available 
 
 ```yaml
     steps:
-      - uses: actions/setup-java@v4
+      - uses: Tencent/setup-tencent-kona@v4
         with:
           distribution: '<distribution>'
           java-version: |

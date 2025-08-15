@@ -222,7 +222,7 @@ The available package types are:
 ```yaml
 steps:
   - uses: actions/checkout@v4
-  - uses: actions/setup-java@v4
+  - uses: Tencent/setup-tencent-kona@v4
     with:
       distribution: 'kona'
       java-version: '8'
